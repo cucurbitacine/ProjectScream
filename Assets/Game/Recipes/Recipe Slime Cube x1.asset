@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec22a5c3f14c2548b5ecfb88d4a27f7, type: 3}
+  m_Name: Recipe Slime Cube x1
+  m_EditorClassIdentifier: 
+  result:
+    amount: 1
+    item: {fileID: 11400000, guid: 35a13c209fe893a4c887dcfff1bb2a0b, type: 2}
+  ingredients:
+  - amount: 3
+    item: {fileID: 11400000, guid: 636758d6b5b770c499d60db6c685f531, type: 2}
