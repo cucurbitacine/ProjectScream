@@ -45,7 +45,7 @@ namespace Game.Scripts
 
         public void Click(GameObject actor)
         {
-            if (gameObject.IsShaking()) return;
+            //if (gameObject.IsShaking()) return;
             
             gameObject.Shake();
             

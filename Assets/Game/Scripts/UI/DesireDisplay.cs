@@ -5,14 +5,14 @@ namespace Game.Scripts.UI
 {
     public class DesireDisplay : MonoBehaviour
     {
-        [SerializeField] private Buyer buyer;
+        [SerializeField] private Customer customer;
 
         [SerializeField] private GameObject displayObject;
 
         private Slot _slot;
         private ISlotDisplay _slotDisplay;
         
-        private void OnBuyerDesireChanged(Ingredient desire)
+        private void OnCustomerDesireChanged(Ingredient desire)
         {
             if (_slot == null) _slot = new Slot();
 
@@ -33,17 +33,14 @@ namespace Game.Scripts.UI
 
         private void OnEnable()
         {
-            buyer.DesireChanged += OnBuyerDesireChanged;
+            customer.DesireChanged += OnCustomerDesireChanged;
+            
+            OnCustomerDesireChanged(customer.Desire);
         }
 
         private void OnDisable()
         {
-            buyer.DesireChanged -= OnBuyerDesireChanged;
-        }
-
-        private void Start()
-        {
-            OnBuyerDesireChanged(buyer.Desire);
+            customer.DesireChanged -= OnCustomerDesireChanged;
         }
     }
 }

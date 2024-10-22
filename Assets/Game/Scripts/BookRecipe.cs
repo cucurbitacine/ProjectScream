@@ -9,15 +9,27 @@ namespace Game.Scripts
     {
         [SerializeField] private List<Recipe> recipes = new List<Recipe>();
 
-        public bool TryGetRecipe(out Recipe result, List<Ingredient> ingredients)
+        public int CountRecipes => recipes.Count;
+
+        public Recipe GetRecipe(int index)
+        {
+            if (0 <= index && index < CountRecipes)
+            {
+                return recipes[index];
+            }
+
+            return null;
+        }
+        
+        public bool FindRecipe(out Recipe found, List<Ingredient> ingredients)
         {
             foreach (var recipe in recipes.Where(recipe => recipe.Match(ingredients)))
             {
-                result = recipe;
+                found = recipe;
                 return true;
             }
 
-            result = null;
+            found = null;
             return false;
         }
     }

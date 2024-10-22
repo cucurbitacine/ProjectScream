@@ -17,6 +17,11 @@ namespace Game.Scripts
         {
             return result;
         }
+
+        public List<Ingredient> GetIngredients()
+        {
+            return new List<Ingredient>(ingredients);
+        }
         
         public bool Match(List<Ingredient> listStack)
         {
