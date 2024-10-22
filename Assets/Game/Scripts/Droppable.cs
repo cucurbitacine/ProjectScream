@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using CucuTools;
 using Game.Scripts.Core;
@@ -49,8 +48,6 @@ namespace Game.Scripts
 
                 if (hit.transform.TryGetComponent(out IBin bin) && TryDrop(bin))
                 {
-                    Debug.Log("OnDragged false");
-                    
                     break;
                 }
             }
@@ -84,8 +81,6 @@ namespace Game.Scripts
         {
             if (other.transform.TryGetComponent(out IBin bin) && TryDrop(bin))
             {
-                Debug.Log("OnCollisionEnter2D");
-
                 if (dropEffectPrefab)
                 {
                     var point = other.GetContact(0).point;

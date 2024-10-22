@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b44ae89d267f17489f5d9a05315dc40, type: 3}
-  m_Name: Item Pumpkin
+  m_Name: Item Result Dream Catcher
   m_EditorClassIdentifier: 
   <StackMax>k__BackingField: 999
-  prefab: {fileID: 4108405360676861402, guid: aeb42c08ca9fe394bb88dae03e5fa781, type: 3}
-  icon: {fileID: -221752160938979099, guid: 111a1b27445b927488b0f6df6055e409, type: 3}
+  cost: 10
+  duration: 3
+  prefab: {fileID: 5188046834098680852, guid: c8a09730f9ecdde418e5d74c51afe40a, type: 3}
+  icon: {fileID: -8627281338238813023, guid: 0f33f64b9068a404a9d78c17c23547a9, type: 3}

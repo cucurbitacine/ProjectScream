@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using CucuTools.InventorySystem;
 using Game.Scripts.Core;
 using Game.Scripts.Effects;
@@ -8,42 +9,111 @@ namespace Game.Scripts
 {
     public class ItemSource : MonoBehaviour, IClickable
     {
-        [SerializeField] private bool available = true;
         [SerializeField] private ItemBase item;
         
         [Space]
-        [SerializeField] private int progress = 0;
-        [SerializeField] private int totalClick = 10;
+        [SerializeField] private bool isUnlocked = false;
+        [SerializeField] [Min(0)] private int unlockCost = 0;
 
+        [Space]
+        [SerializeField] private int pickedAmount = 0;
+        [SerializeField] private int totalAmount = 10;
+
+        [Space]
+        [SerializeField] private bool isCooldown = false;
+        [SerializeField] [Min(0f)] private float cooldownTime = 1f;
+        
         [Space]
         [SerializeField] private GameObject destination;
         
         private IInventory _inventory;
+
+        public bool IsUnlocked => isUnlocked;
+        public int UnlockCost => unlockCost;
+        public float CooldownTime => cooldownTime;
+        public int TotalAmount => totalAmount;
+        public int AvailableAmount => TotalAmount - pickedAmount;
+        
+        public event Action<bool> Unlocked; 
+        public event Action<int> AvailableChanged; 
+        public event Action<float> CooldownChanged; 
         
         public bool CanBeClicked(GameObject actor)
         {
-            if (!available) return false;
-
-            if (gameObject.IsShaking()) return false;
-            
             return true;
         }
 
         public void Click(GameObject actor)
         {
-            progress++;
-
-            if (totalClick <= progress && _inventory.TryPut(item))
-            {
-                progress = 0;
-            }
+            if (gameObject.IsShaking()) return;
             
             gameObject.Shake();
+            
+            if (!isUnlocked)
+            {
+                if (Wallet.Instance.Get(unlockCost))
+                {
+                    isUnlocked = true;
+                    Unlocked?.Invoke(true);
+                }
+                
+                return;
+            }
+
+            if (!isCooldown && _inventory.TryPut(item))
+            {
+                pickedAmount++;
+                AvailableChanged?.Invoke(AvailableAmount);
+                
+                if (totalAmount <= pickedAmount)
+                {
+                    Cooldown();
+                }
+            }
+        }
+
+        private void Cooldown()
+        {
+            if (isCooldown) return;
+            
+            if (cooldownTime > 0f)
+            {
+                StartCoroutine(CooldownProgress());
+            }
+            else
+            {
+                pickedAmount = 0;
+            }
+        }
+
+        private IEnumerator CooldownProgress()
+        {
+            isCooldown = true;
+
+            var timer = 0f;
+            while (timer < cooldownTime)
+            {
+                CooldownChanged?.Invoke(timer / cooldownTime);
+                
+                timer += Time.deltaTime;
+                yield return null;
+            }
+            
+            CooldownChanged?.Invoke(1f);
+            isCooldown = false;
+            
+            pickedAmount = 0;
+            AvailableChanged?.Invoke(AvailableAmount);
         }
         
         private void Awake()
         {
             destination.TryGetComponent(out _inventory);
+        }
+
+        private void Start()
+        {
+            Unlocked?.Invoke(isUnlocked);
         }
     }
 }

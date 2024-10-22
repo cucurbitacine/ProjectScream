@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b44ae89d267f17489f5d9a05315dc40, type: 3}
-  m_Name: Item Dream Catcher
+  m_Name: Item Result Slime Cube
   m_EditorClassIdentifier: 
   <StackMax>k__BackingField: 999
-  prefab: {fileID: 5188046834098680852, guid: c8a09730f9ecdde418e5d74c51afe40a, type: 3}
-  icon: {fileID: -8627281338238813023, guid: 0f33f64b9068a404a9d78c17c23547a9, type: 3}
+  cost: 10
+  duration: 3
+  prefab: {fileID: 3225708526269511554, guid: a3c13b69ed907e840a4e98c38d612d02, type: 3}
+  icon: {fileID: 2617451057108944262, guid: 2966e86df60fcc84085177bf23513231, type: 3}

@@ -14,22 +14,69 @@ namespace Game.Scripts
 
         private readonly List<RaycastHit2D> overlap = new List<RaycastHit2D>();
 
-        private void OnPointEvent(Vector2 value)
+        private int Raycast(Vector2 point)
         {
-        }
-        
-        private void OnClickEvent(bool clicked)
-        {
-            if (!clicked) return;
-            
             var filter = new ContactFilter2D()
             {
                 useTriggers = true,
                 useLayerMask = true,
                 layerMask = clickLayer,
             };
-                
-            var count = Physics2D.Raycast(dragInput.WorldPoint, Vector2.zero, filter, overlap);
+            
+            return Physics2D.Raycast(point, Vector2.zero, filter, overlap);
+        }
+
+        private readonly HashSet<IHighlightable> highlightSet = new HashSet<IHighlightable>();
+        private readonly HashSet<IHighlightable> highlightCurrent = new HashSet<IHighlightable>();
+        
+        private void OnWorldPointEvent(Vector2 value)
+        {
+            var count = Raycast(value);
+            
+            /*
+             * Get Current Objects
+             */
+            
+            highlightCurrent.Clear();
+            for (var i = 0; i < count; i++)
+            {
+                if (overlap[i].transform.TryGetComponent(out IHighlightable highlightable))
+                {
+                    highlightCurrent.Add(highlightable);
+                }
+            }
+
+            /*
+             * Turn Off and Remove Lost Objects
+             */
+            
+            foreach (var highlightable in highlightSet)
+            {
+                if (!highlightCurrent.Contains(highlightable))
+                {
+                    highlightable.Highlight(false);
+                }
+            }
+            highlightSet.RemoveWhere(h => !highlightCurrent.Contains(h));
+
+            /*
+             * Add and Turn On New Objects
+             */
+            
+            foreach (var highlightable in highlightCurrent)
+            {
+                if (highlightSet.Add(highlightable))
+                {
+                    highlightable.Highlight(true);
+                }
+            }
+        }
+        
+        private void OnClickEvent(bool clicked)
+        {
+            if (!clicked) return;
+            
+            var count = Raycast(dragInput.WorldPoint);
 
             if (count > 0)
             {
@@ -49,13 +96,13 @@ namespace Game.Scripts
         
         private void OnEnable()
         {
-            dragInput.WorldPointEvent += OnPointEvent;
+            dragInput.WorldPointEvent += OnWorldPointEvent;
             dragInput.ClickEvent += OnClickEvent;
         }
         
         private void OnDisable()
         {
-            dragInput.WorldPointEvent -= OnPointEvent;
+            dragInput.WorldPointEvent -= OnWorldPointEvent;
             dragInput.ClickEvent -= OnClickEvent;
         }
     }

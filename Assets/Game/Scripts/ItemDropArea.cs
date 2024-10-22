@@ -1,3 +1,4 @@
+using System.Linq;
 using CucuTools;
 using CucuTools.InventorySystem;
 using Game.Scripts.Core;
@@ -7,13 +8,23 @@ namespace Game.Scripts
 {
     public class ItemDropArea : MonoBehaviour, IBin
     {
+        [field: SerializeField] public bool Available { get; set; } = true;
+        
+        [Space]
         [SerializeField] private GameObject destination;
 
         private IInventory _destination;
         
         public bool CanDrop(GameObject target)
         {
-            return target.TryGetComponent<IItem>(out _);
+            if (!Available) return false;
+
+            if (GetComponentsInChildren<IFilter>().Any(filter => !filter.Filter(target)))
+            {
+                return false;
+            }
+            
+            return target.TryGetComponent<IItem>(out var item) && _destination.Available(item.Config) > 0;
         }
 
         public void Drop(GameObject target)
@@ -30,5 +41,10 @@ namespace Game.Scripts
 
             destination.TryGetComponent(out _destination);
         }
+    }
+
+    public interface IFilter
+    {
+        public bool Filter(GameObject target);
     }
 }

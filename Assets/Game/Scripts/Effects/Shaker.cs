@@ -17,7 +17,7 @@ namespace Game.Scripts.Effects
 
         public bool IsShaking => Time.time - _lastShake < duration;
         
-        public void Shake()
+        public void Shake(float power = 1f)
         {
             if (target == null) target = transform;
 
@@ -25,7 +25,7 @@ namespace Game.Scripts.Effects
             
             _lastShake = Time.time;
             
-            target.DOShakeScale(duration, strength, 10, 90f, true, ShakeRandomnessMode.Harmonic);
+            target.DOShakeScale(duration * power, strength * power, 10, 90f, true, ShakeRandomnessMode.Harmonic);
         }
     }
 
@@ -36,11 +36,11 @@ namespace Game.Scripts.Effects
             return gameObject.TryGetComponent(out Shaker shaker) && shaker.IsShaking;
         }
         
-        public static void Shake(this GameObject gameObject)
+        public static void Shake(this GameObject gameObject, float power = 1f)
         {
             if (gameObject.TryGetComponent(out Shaker shaker))
             {
-                shaker.Shake();
+                shaker.Shake(power);
             }
         }
     }

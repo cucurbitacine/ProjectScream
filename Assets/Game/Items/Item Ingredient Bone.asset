@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b44ae89d267f17489f5d9a05315dc40, type: 3}
-  m_Name: Item Slime
+  m_Name: Item Ingredient Bone
   m_EditorClassIdentifier: 
   <StackMax>k__BackingField: 999
-  prefab: {fileID: 5795841814689016272, guid: db65410c02a60d543b49a2e6b3a8f82c, type: 3}
-  icon: {fileID: 3063323286079204447, guid: 49db884b0afa0e349892fc718fd275ca, type: 3}
+  cost: 1
+  duration: 0.2
+  prefab: {fileID: 6470844872231904530, guid: 7072086f8594c544eae4135c31972d5a, type: 3}
+  icon: {fileID: -8205527184594664779, guid: 93dcc48284a55464490f2633e1f55021, type: 3}

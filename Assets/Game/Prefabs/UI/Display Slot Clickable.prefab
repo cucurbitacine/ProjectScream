@@ -92,4 +92,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd20044279fc4b849956ec9cd1298715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBeClicked: 1
+  canBeDropped: 0
   slotDisplay: {fileID: 2463040268330997567}

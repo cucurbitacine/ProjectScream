@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1829617090736168121, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: <Config>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: d3567e2a65e2cfd4197c2d25e03757b3, type: 2}
     - target: {fileID: 2176736218169524456, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
       propertyPath: m_Size.x
       value: 0.5
@@ -74,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7393418586632254105, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
       propertyPath: m_Name
-      value: Item Poison Variant
+      value: Item Poison
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

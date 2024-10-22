@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b44ae89d267f17489f5d9a05315dc40, type: 3}
-  m_Name: Item Sagebrush
+  m_Name: Item Ingredient Pumpkin
   m_EditorClassIdentifier: 
   <StackMax>k__BackingField: 999
-  prefab: {fileID: 9082767431268582489, guid: e4ed5bc838c307f4080b9f123e5a4878, type: 3}
-  icon: {fileID: 453790481640536950, guid: 1570f9f73279e0a47aa7e5a9cb9ad814, type: 3}
+  cost: 2
+  duration: 0.2
+  prefab: {fileID: 4108405360676861402, guid: aeb42c08ca9fe394bb88dae03e5fa781, type: 3}
+  icon: {fileID: -221752160938979099, guid: 111a1b27445b927488b0f6df6055e409, type: 3}

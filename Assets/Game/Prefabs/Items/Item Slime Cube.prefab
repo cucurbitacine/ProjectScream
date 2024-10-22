@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1829617090736168121, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: <Config>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 35a13c209fe893a4c887dcfff1bb2a0b, type: 2}
     - target: {fileID: 2176736218169524456, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
       propertyPath: m_Size.x
       value: 0.875
@@ -74,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7393418586632254105, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
       propertyPath: m_Name
-      value: Item Slime Cube Variant
+      value: Item Slime Cube
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using CucuTools;
 using CucuTools.InventorySystem;
@@ -7,37 +9,54 @@ using UnityEngine;
 
 namespace Game.Scripts
 {
-    public class Pot : MonoBehaviour, IClickable
+    public class Pot : MonoBehaviour, IClickable, IFilter
     {
-        [SerializeField] private GameObject destinationObject;
-
+        [SerializeField] private bool isCrafting;
+        [SerializeField] private BookRecipe bookRecipe;
+        
         [Space]
         [SerializeField] private ItemConfig failResult;
-        [SerializeField] private BookRecipe _bookRecipe;
+        [SerializeField] private Transform defaultSpawnPoint;
         
-        private IInventory _inventory;
+        [Space]
+        [SerializeField] private GameObject destination;
+        
+        private IInventory _potInventory;
+        private Coroutine _crafting;
 
-        public Ingredient GetResult()
+        public event Action<float> ProgressChanged; 
+        
+        public void Craft()
+        {
+            if (isCrafting) return;
+
+            if (_crafting != null) StopCoroutine(_crafting);
+            _crafting = StartCoroutine(Crafting());
+        }
+        
+        public bool Filter(GameObject target)
+        {
+            return !isCrafting;
+        }
+        
+        private Ingredient GetResult()
         {
             var stack = new List<Ingredient>();
 
-            foreach (var item in _inventory.GetItems())
+            foreach (var item in _potInventory.GetItems())
             {
-                if (item is ItemConfig itemConfig)
-                {
-                    var amount = _inventory.CountItems(itemConfig);
+                var amount = _potInventory.CountItems(item);
                     
-                    var itemStack = new Ingredient()
-                    {
-                        amount = amount,
-                        item = itemConfig,
-                    };
+                var itemStack = new Ingredient()
+                {
+                    amount = amount,
+                    item = item,
+                };
                         
-                    stack.Add(itemStack);
-                }
+                stack.Add(itemStack);
             }
 
-            if (_bookRecipe && _bookRecipe.TryGetRecipe(out var bestRecipe, stack))
+            if (bookRecipe && bookRecipe.TryGetRecipe(out var bestRecipe, stack))
             {
                 return bestRecipe.GetResult();
             }
@@ -47,48 +66,69 @@ namespace Game.Scripts
                 return new Ingredient()
                 {
                     item = failResult,
-                    amount = _inventory.CountItems(),
+                    amount = _potInventory.CountItems(),
                 };
             }
             
             return default;
         }
         
-        public void Craft()
+        private IEnumerator Progress(float duration)
         {
+            var timer = 0f;
+            while (timer < duration)
+            {
+                ProgressChanged?.Invoke(timer / duration);
+                            
+                timer += Time.deltaTime;
+                yield return null;
+            }
+                        
+            ProgressChanged?.Invoke(1f);
+        }
+        
+        private IEnumerator Crafting()
+        {
+            isCrafting = true;
+            
             var result = GetResult();
-
             if (result.amount == 0)
             {
-                return;
+                isCrafting = false;
+                yield break;
             }
-
-            if (destinationObject && destinationObject.TryGetComponent(out IInventory destination))
+            
+            if (destination && destination.TryGetComponent(out IInventory destinationInventory) && destinationInventory.CanPut(result.item, result.amount))
             {
-                if (destination == _inventory)
+                _potInventory.Clear();
+                if (result.item is IDurationSource untilPutSomewhere && untilPutSomewhere.GetDuration() > 0f)
                 {
-                    _inventory.Clear();
+                    yield return Progress(untilPutSomewhere.GetDuration());
+                }
+                
+                destinationInventory.Put(result.item, result.amount);
                     
-                    _inventory.Put(result.item, result.amount);
-
-                    return;
-                }
-
-                if (destination.TryPut(result.item, result.amount))
-                {
-                    _inventory.Clear();
-
-                    return;
-                }
+                gameObject.Shake();
+                isCrafting = false;
+                yield break;
             }
-
-            if (result.item is ItemConfig itemConfig)
+            
+            _potInventory.Clear();
+            if (result.item is IDurationSource untilPutOnScene && untilPutOnScene.GetDuration() > 0f)
+            {
+                yield return Progress(untilPutOnScene.GetDuration());
+            }
+            
+            if (result.item is IPrefabSource prefabSource)
             {
                 for (var i = 0; i < result.amount; i++)
                 {
-                    SmartPrefab.SmartInstantiate(itemConfig.GetPrefab(), transform.position, Quaternion.identity);
+                    SmartPrefab.SmartInstantiate(prefabSource.GetPrefab(), defaultSpawnPoint.position, Quaternion.identity);
                 }
             }
+            
+            gameObject.Shake();
+            isCrafting = false;
         }
         
         private void OnInventoryUpdated(IInventory inv, ISlot slt)
@@ -98,22 +138,22 @@ namespace Game.Scripts
 
         private void Awake()
         {
-            TryGetComponent(out _inventory);
+            TryGetComponent(out _potInventory);
         }
 
         private void OnEnable()
         {
-            _inventory.InventoryUpdated += OnInventoryUpdated;
+            _potInventory.InventoryUpdated += OnInventoryUpdated;
         }
 
         private void OnDisable()
         {
-            _inventory.InventoryUpdated -= OnInventoryUpdated;
+            _potInventory.InventoryUpdated -= OnInventoryUpdated;
         }
 
         public bool CanBeClicked(GameObject actor)
         {
-            return true;
+            return !isCrafting;
         }
         
         public void Click(GameObject actor)

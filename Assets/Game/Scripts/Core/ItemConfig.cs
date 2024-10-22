@@ -4,8 +4,12 @@ using UnityEngine;
 namespace Game.Scripts.Core
 {
     [CreateAssetMenu(menuName = "Game/Create Item Config", fileName = "Item Config", order = 0)]
-    public class ItemConfig : ItemBase
+    public class ItemConfig : ItemBase, IPrefabSource, IIconSource, ICostSource, IDurationSource
     {
+        [Header("Config")]
+        [SerializeField] [Min(0)] private int cost = 0;
+        [SerializeField] [Min(0f)] private float duration = 0f;
+        
         [Space]
         [SerializeField] private GameObject prefab;
         [SerializeField] private Sprite icon;
@@ -24,5 +28,35 @@ namespace Game.Scripts.Core
         {
             return icon;
         }
+
+        public int GetCost()
+        {
+            return cost;
+        }
+
+        public float GetDuration()
+        {
+            return duration;
+        }
+    }
+
+    public interface IPrefabSource
+    {
+        public GameObject GetPrefab();
+    }
+    
+    public interface IIconSource
+    {
+        public Sprite GetIcon();
+    }
+    
+    public interface ICostSource
+    {
+        public int GetCost();
+    }
+
+    public interface IDurationSource
+    {
+        public float GetDuration();
     }
 }

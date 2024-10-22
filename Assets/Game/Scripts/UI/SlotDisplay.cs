@@ -20,11 +20,11 @@ namespace Game.Scripts.UI
         {
             Slot = slot;
 
-            if (Slot != null && Slot.TryPeek(out var item) && item is ItemConfig ingredient)
+            if (Slot != null && Slot.TryPeek(out var item) && item is IIconSource iconSource)
             {
                 container?.SetActive(true);
                 
-                icon.sprite = ingredient.GetIcon();
+                icon.sprite = iconSource.GetIcon();
                 amountDisplay.text = $"{slot.CountItems}";
 
                 gameObject.Shake();

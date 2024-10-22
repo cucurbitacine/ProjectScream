@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b44ae89d267f17489f5d9a05315dc40, type: 3}
-  m_Name: Item Poison
+  m_Name: Item Ingredient Sagebrush
   m_EditorClassIdentifier: 
   <StackMax>k__BackingField: 999
-  prefab: {fileID: 306691788503541121, guid: d61b39865a8a6dc4da5125df037be66f, type: 3}
-  icon: {fileID: 551219013361090453, guid: 673e16907785c61419241cd9eab9a5d3, type: 3}
+  cost: 1
+  duration: 0.2
+  prefab: {fileID: 9082767431268582489, guid: e4ed5bc838c307f4080b9f123e5a4878, type: 3}
+  icon: {fileID: 453790481640536950, guid: 1570f9f73279e0a47aa7e5a9cb9ad814, type: 3}
