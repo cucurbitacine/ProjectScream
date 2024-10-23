@@ -15,9 +15,13 @@ namespace Game.Scripts
         {
             var level = GetLevel();
 
-            var randomNumber = Random.Range(0, level);
+            var randomNumber = Random.Range(0, level + 1);
 
-            return desireByLevel[randomNumber].GetRandom();
+            var list = desireByLevel[randomNumber];
+            
+            Debug.Log($"Reputation: {Reputation.Instance.Level}. Level: {level}. List with reputation [{list.reputation}] was taken");
+            
+            return list.GetRandom();
 
             return defaultDesire;
         }

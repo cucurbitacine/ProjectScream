@@ -1,4 +1,5 @@
 using System;
+using CucuTools;
 using CucuTools.InventorySystem;
 using Game.Scripts.Core;
 using Game.Scripts.Effects;
@@ -15,6 +16,11 @@ namespace Game.Scripts
         [Space]
         [SerializeField] private GameObject desireDisplay;
         [SerializeField] private DesireSource desireSource;
+
+        [Space]
+        [SerializeField] private AudioSfx failSfx;
+        [SerializeField] private AudioSfx drawSfx;
+        [SerializeField] private AudioSfx successSfx;
         
         [Space]
         [SerializeField] private GameObject inventory;
@@ -59,10 +65,18 @@ namespace Game.Scripts
             if (desire.amount == usefulAmount)
             {
                 Reputation.Instance.Add(1);
+                
+                if (successSfx) gameObject.PlayOneShot(successSfx.AudioClips);
             }
             else if (usefulAmount == 0)
             {
                 Reputation.Instance.Get(1);
+
+                if (failSfx) gameObject.PlayOneShot(failSfx.AudioClips);
+            }
+            else
+            {
+                if (drawSfx) gameObject.PlayOneShot(drawSfx.AudioClips);
             }
             
             Wallet.Instance.Add(usefulPriceTotal + uselessPrice);

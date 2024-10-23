@@ -19,6 +19,11 @@ namespace Game.Scripts
         [SerializeField] private Transform defaultSpawnPoint;
 
         [Space]
+        [SerializeField] private AudioSfx clickSfx;
+        [SerializeField] private AudioSfx highlightSfx;
+        [SerializeField] private AudioSfx craftingSfx;
+        
+        [Space]
         [SerializeField] private GameObject destination;
 
         private IInventory _potInventory;
@@ -90,11 +95,13 @@ namespace Game.Scripts
         private IEnumerator Crafting()
         {
             isCrafting = true;
-
+            if (craftingSfx) gameObject.PlaySafe(craftingSfx.AudioClips);
+            
             var result = GetResult();
             if (result.amount == 0)
             {
                 isCrafting = false;
+                gameObject.StopSafe();
                 yield break;
             }
 
@@ -105,20 +112,21 @@ namespace Game.Scripts
                 _potInventory.Clear();
                 if (result.item is IDurationSource untilPutSomewhere && untilPutSomewhere.GetDuration() > 0f)
                 {
-                    yield return Progress(untilPutSomewhere.GetDuration() * result.amount);
+                    yield return Progress(untilPutSomewhere.GetDuration());
                 }
 
                 destinationInventory.Put(result.item, result.amount);
 
                 gameObject.Shake();
                 isCrafting = false;
+                gameObject.StopSafe();
                 yield break;
             }
 
             _potInventory.Clear();
             if (result.item is IDurationSource untilPutOnScene && untilPutOnScene.GetDuration() > 0f)
             {
-                yield return Progress(untilPutOnScene.GetDuration() * result.amount);
+                yield return Progress(untilPutOnScene.GetDuration());
             }
 
             if (result.item is IPrefabSource prefabSource)
@@ -130,6 +138,7 @@ namespace Game.Scripts
             }
 
             gameObject.Shake();
+            gameObject.StopSafe();
             isCrafting = false;
         }
 
@@ -163,6 +172,8 @@ namespace Game.Scripts
             Craft();
 
             gameObject.Shake();
+            
+            if (clickSfx) gameObject.PlayOneShot(clickSfx.AudioClips);
         }
 
         public void Highlight(bool value)
@@ -170,6 +181,8 @@ namespace Game.Scripts
             if (value && !isCrafting)
             {
                 gameObject.Shake(0.5f);
+
+                if (highlightSfx) gameObject.PlayOneShot(highlightSfx.AudioClips);
             }
         }
     }

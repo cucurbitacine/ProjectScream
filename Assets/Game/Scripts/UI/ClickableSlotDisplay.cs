@@ -14,6 +14,10 @@ namespace Game.Scripts.UI
         
         [Space]
         [SerializeField] private SlotDisplay slotDisplay;
+
+        [Space]
+        [SerializeField] private AudioSfx clickSfx;
+        [SerializeField] private AudioSfx highlightSfx;
         
         public bool CanBeClicked(GameObject actor)
         {
@@ -24,6 +28,11 @@ namespace Game.Scripts.UI
         {
             if (CanBeClicked(actor) && slotDisplay.Slot.TryPeek(out var item) && item is IPrefabSource prefabSource)
             {
+                if (clickSfx)
+                {
+                    gameObject.PlayOneShot(clickSfx.AudioClips);
+                }
+                
                 var ingredient = SmartPrefab.SmartInstantiate(prefabSource.GetPrefab(), transform.position, Quaternion.identity);
 
                 if (ingredient.TryGetComponent(out IDraggable draggable) && slotDisplay.Slot.TryPick(item))
@@ -60,9 +69,14 @@ namespace Game.Scripts.UI
         
         public void Highlight(bool value)
         {
-            if (value && canBeClicked)
+            if (value && canBeClicked && slotDisplay && slotDisplay.Slot != null && !slotDisplay.Slot.IsFree())
             {
                 gameObject.Shake(0.5f);
+                
+                if (highlightSfx)
+                {
+                    gameObject.PlayOneShot(highlightSfx.AudioClips);
+                }
             }
         }
     }

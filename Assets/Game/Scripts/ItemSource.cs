@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using CucuTools;
 using CucuTools.InventorySystem;
 using Game.Scripts.Core;
 using Game.Scripts.Effects;
@@ -22,6 +23,10 @@ namespace Game.Scripts
         [Space]
         [SerializeField] private bool isCooldown = false;
         [SerializeField] [Min(0f)] private float cooldownTime = 1f;
+
+        [Space]
+        [SerializeField] private AudioSfx clickSfx;
+        [SerializeField] private AudioSfx highlightSfx;
         
         [Space]
         [SerializeField] private GameObject destination;
@@ -48,6 +53,11 @@ namespace Game.Scripts
             //if (gameObject.IsShaking()) return;
             
             gameObject.Shake();
+            
+            if (clickSfx)
+            {
+                gameObject.PlayOneShot(clickSfx.AudioClips);
+            }
             
             if (!isUnlocked)
             {
@@ -77,6 +87,11 @@ namespace Game.Scripts
             if (value)
             {
                 gameObject.Shake(0.5f);
+
+                if (highlightSfx)
+                {
+                    gameObject.PlayOneShot(highlightSfx.AudioClips);
+                }
             }
         }
         

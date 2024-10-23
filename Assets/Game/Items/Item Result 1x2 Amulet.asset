@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b44ae89d267f17489f5d9a05315dc40, type: 3}
   m_Name: Item Result 1x2 Amulet
   m_EditorClassIdentifier: 
-  <StackMax>k__BackingField: 1
+  <StackMax>k__BackingField: 5
   title: Amulet
   duration: 2
   cost: 80
