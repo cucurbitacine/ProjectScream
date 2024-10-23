@@ -10,7 +10,8 @@ namespace Game.Scripts
     {
         [SerializeField] private Ingredient desire;
         [SerializeField] [Min(0)] private int uselessItemPrice = 0;
-
+        [SerializeField] private ItemDropArea dropArea;
+        
         [Space]
         [SerializeField] private GameObject desireDisplay;
         [SerializeField] private DesireSource desireSource;
@@ -29,10 +30,14 @@ namespace Game.Scripts
         public void Ready()
         {
             desireDisplay?.SetActive(false);
+
+            dropArea.Available = false;
         }
 
         public void Activate()
         {
+            dropArea.Available = true;
+            
             desireDisplay?.SetActive(true);
             
             UpdateDesire();
@@ -67,6 +72,8 @@ namespace Game.Scripts
 
         public void Complete()
         {
+            dropArea.Available = false;
+            
             desireDisplay?.SetActive(false);
             
             Completed?.Invoke(this);

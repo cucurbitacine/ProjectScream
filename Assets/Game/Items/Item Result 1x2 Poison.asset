@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b44ae89d267f17489f5d9a05315dc40, type: 3}
+  m_Name: Item Result 1x2 Poison
+  m_EditorClassIdentifier: 
+  <StackMax>k__BackingField: 1
+  title: Poison
+  duration: 2
+  cost: 60
+  prefab: {fileID: 306691788503541121, guid: d61b39865a8a6dc4da5125df037be66f, type: 3}
+  icon: {fileID: 5855946064308460202, guid: 673e16907785c61419241cd9eab9a5d3, type: 3}

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using CucuTools.InventorySystem;
+using Game.Scripts.Core;
+using TMPro;
 using UnityEngine;
 
 namespace Game.Scripts.UI
@@ -8,9 +10,13 @@ namespace Game.Scripts.UI
     {
         [SerializeField] private Recipe currentRecipe;
         
+        [Space]
         [SerializeField] private SlotDisplay resultSlotDisplay;
         [SerializeField] private List<SlotDisplay> ingredientSlotDisplays = new List<SlotDisplay>();
 
+        [Space]
+        [SerializeField] private TMP_Text titleDisplay;
+        
         private ISlot _resultSlot;
         
         public void Display()
@@ -21,6 +27,13 @@ namespace Game.Scripts.UI
             _resultSlot.Put(result.item, result.amount);
             resultSlotDisplay.Display(_resultSlot);
 
+            if (titleDisplay)
+            {
+                var title = result.item is ITitleSource source ? source.GetTitle() : string.Empty;
+
+                titleDisplay.text = title;
+            }
+            
             var ingredients = currentRecipe.GetIngredients();
             for (var i = 0; i < ingredientSlotDisplays.Count; i++)
             {

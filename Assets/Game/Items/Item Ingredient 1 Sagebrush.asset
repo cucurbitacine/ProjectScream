@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b44ae89d267f17489f5d9a05315dc40, type: 3}
+  m_Name: Item Ingredient 1 Sagebrush
+  m_EditorClassIdentifier: 
+  <StackMax>k__BackingField: 10
+  title: Sagebrush
+  duration: 1
+  cost: 3
+  prefab: {fileID: 9082767431268582489, guid: e4ed5bc838c307f4080b9f123e5a4878, type: 3}
+  icon: {fileID: 1007164044129982842, guid: 1570f9f73279e0a47aa7e5a9cb9ad814, type: 3}

@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6441093431747914544
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1829617090736168121, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: <Config>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: e60caa5c14d159e40a768b3471207fdd, type: 2}
+    - target: {fileID: 2176736218169524456, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: m_Size.x
+      value: 0.875
+      objectReference: {fileID: 0}
+    - target: {fileID: 2176736218169524456, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: m_Size.y
+      value: 0.875
+      objectReference: {fileID: 0}
+    - target: {fileID: 2176736218169524456, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2420915380394520487, guid: 04a7e493ca5d1f84aa62a51d2ef734c3, type: 3}
+    - target: {fileID: 2176736218169524456, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863176506457358650, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863176506457358650, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863176506457358650, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863176506457358650, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863176506457358650, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863176506457358650, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863176506457358650, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863176506457358650, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863176506457358650, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863176506457358650, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7393418586632254105, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: m_Name
+      value: Item Curse Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4947699324135036842, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5476513385665923494}
+  m_SourcePrefab: {fileID: 100100000, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+--- !u!1 &2146701945479232666 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4947699324135036842, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+  m_PrefabInstance: {fileID: 6441093431747914544}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &5476513385665923494
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146701945479232666}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4375

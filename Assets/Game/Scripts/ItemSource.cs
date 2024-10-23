@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Game.Scripts
 {
-    public class ItemSource : MonoBehaviour, IClickable
+    public class ItemSource : MonoBehaviour, IClickable, IHighlightable
     {
         [SerializeField] private ItemBase item;
         
@@ -26,7 +26,7 @@ namespace Game.Scripts
         [Space]
         [SerializeField] private GameObject destination;
         
-        private IInventory _inventory;
+        private IInventory _destination;
 
         public bool IsUnlocked => isUnlocked;
         public int UnlockCost => unlockCost;
@@ -60,7 +60,7 @@ namespace Game.Scripts
                 return;
             }
 
-            if (!isCooldown && _inventory.TryPut(item))
+            if (!isCooldown && _destination.TryPut(item))
             {
                 pickedAmount++;
                 AvailableChanged?.Invoke(AvailableAmount);
@@ -72,6 +72,14 @@ namespace Game.Scripts
             }
         }
 
+        public void Highlight(bool value)
+        {
+            if (value)
+            {
+                gameObject.Shake(0.5f);
+            }
+        }
+        
         private void Cooldown()
         {
             if (isCooldown) return;
@@ -108,7 +116,7 @@ namespace Game.Scripts
         
         private void Awake()
         {
-            destination.TryGetComponent(out _inventory);
+            destination.TryGetComponent(out _destination);
         }
 
         private void Start()

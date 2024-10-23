@@ -1,7 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using CucuTools;
+using DG.Tweening;
 using Game.Scripts.UI;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace Game.Scripts
         [SerializeField] private float period = 3f;
         [SerializeField] private float threshold = 3f;
         [SerializeField] private DesireSource desireSource;
+        [SerializeField] private Transform exitPoint;
 
         [Space]
         [SerializeField] private GridController grid;
@@ -19,13 +21,14 @@ namespace Game.Scripts
         [Space]
         [SerializeField] private GameObject customerPrefab;
 
+        private float _timer;
         private readonly Dictionary<Customer, int> customerToTable = new Dictionary<Customer, int>();
         
         public void TryAddNewCustomer()
         {
             if (TryGetFreeTable(out var tableId))
             {
-                AddCustomer(tableId);
+                StartCoroutine(AddCustomer(tableId));
             }
         }
 
@@ -44,11 +47,14 @@ namespace Game.Scripts
             return false;
         }
 
-        public async void AddCustomer(int tableId)
+        [SerializeField] private float customerSpeed = 4f; 
+        [SerializeField] private float delay = 1f; 
+        
+        public IEnumerator AddCustomer(int tableId)
         {
             var tablePosition = grid.GetPositionByNumber(tableId);
                 
-            var customerObject = SmartPrefab.SmartInstantiate(customerPrefab, tablePosition, Quaternion.identity);
+            var customerObject = SmartPrefab.SmartInstantiate(customerPrefab, exitPoint.position, Quaternion.identity);
             var customer = customerObject.GetComponent<Customer>();
             
             customerToTable.Add(customer, tableId);
@@ -56,17 +62,23 @@ namespace Game.Scripts
             
             customer.Ready();
             customer.SetDesireSource(desireSource);
+
+            var duration = Vector2.Distance(exitPoint.position, tablePosition) / customerSpeed;
+            customer.transform.DOMove(tablePosition, duration);
+            yield return new WaitForSeconds(duration);
             
-            // Wait
-            await Task.Delay(Random.Range(1000, 3000));
+            yield return new WaitForSeconds(delay);
             
             customer.Activate();
         }
 
-        public async void RemoveCustomer(Customer customer)
+        public IEnumerator RemoveCustomer(Customer customer)
         {
-            // Wait
-            await Task.Delay(Random.Range(1000, 3000));
+            yield return new WaitForSeconds(delay);
+            
+            var duration = Vector2.Distance(exitPoint.position, customer.transform.position) / customerSpeed;
+            customer.transform.DOMove(exitPoint.position, duration);
+            yield return new WaitForSeconds(duration);
             
             customerToTable.Remove(customer);
             
@@ -75,10 +87,8 @@ namespace Game.Scripts
         
         private void OnCustomerCompleted(Customer customer)
         {
-            RemoveCustomer(customer);
+            StartCoroutine(RemoveCustomer(customer));
         }
-
-        private float _timer;
 
         private void Awake()
         {

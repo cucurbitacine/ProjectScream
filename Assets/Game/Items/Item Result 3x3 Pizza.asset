@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b44ae89d267f17489f5d9a05315dc40, type: 3}
+  m_Name: Item Result 3x3 Pizza
+  m_EditorClassIdentifier: 
+  <StackMax>k__BackingField: 1
+  title: Pineapple Pizza
+  duration: 8
+  cost: 2416
+  prefab: {fileID: 4997922418667855532, guid: 773efbea0c0856a438b9e19456403e6d, type: 3}
+  icon: {fileID: -8150261086741798234, guid: ac42203b9cfa1d54997f87a54f5eb244, type: 3}

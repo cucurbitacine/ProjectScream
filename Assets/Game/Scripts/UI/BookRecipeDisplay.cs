@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 namespace Game.Scripts.UI
@@ -6,18 +7,16 @@ namespace Game.Scripts.UI
     {
         [SerializeField] [Min(0)] private int selected = 0;
         [SerializeField] private BookRecipe currentBook;
-        
-        [Space]
-        [SerializeField] private RecipeDisplay recipeDisplay;
 
-        public void Display(Recipe recipe)
-        {
-            recipeDisplay.Display(recipe);
-        }
+        [Space]
+        [SerializeField] private TMP_Text pageDisplay;
+        [SerializeField] private RecipeDisplay recipeDisplay;
         
         public void Display()
         {
             recipeDisplay.Display(currentBook.GetRecipe(selected));
+
+            pageDisplay.text = $"{(selected + 1)} / {currentBook.CountRecipes}";
         }
         
         public void Display(BookRecipe bookRecipe)

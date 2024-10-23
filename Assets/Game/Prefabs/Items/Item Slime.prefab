@@ -23,7 +23,7 @@ PrefabInstance:
     - target: {fileID: 2176736218169524456, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 3063323286079204447, guid: 49db884b0afa0e349892fc718fd275ca, type: 3}
+      objectReference: {fileID: 8703726216059296913, guid: 49db884b0afa0e349892fc718fd275ca, type: 3}
     - target: {fileID: 2176736218169524456, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7393418586632254105, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
       propertyPath: m_Name
-      value: Item Slime Variant
+      value: Item Slime
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

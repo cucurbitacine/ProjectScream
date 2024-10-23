@@ -13,19 +13,20 @@ namespace Game.Scripts.Effects
         [Space]
         [SerializeField] private Transform target;
 
-        private float _lastShake = float.MinValue;
+        public bool IsShaking => _shaking != null && _shaking.IsActive() && _shaking.IsPlaying();
 
-        public bool IsShaking => Time.time - _lastShake < duration;
+        private Tweener _shaking;
         
         public void Shake(float power = 1f)
         {
             if (target == null) target = transform;
 
-            if (IsShaking) return;
+            if (IsShaking)
+            {
+                _shaking.Complete();
+            }
             
-            _lastShake = Time.time;
-            
-            target.DOShakeScale(duration * power, strength * power, 10, 90f, true, ShakeRandomnessMode.Harmonic);
+            _shaking = target.DOShakeScale(duration * power, strength * power, 10, 90f, true, ShakeRandomnessMode.Harmonic);
         }
     }
 

@@ -13,9 +13,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 9ad4cc1d0642afc41a6536b3970ee455, type: 2}
     - target: {fileID: 2176736218169524456, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: m_Size.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2176736218169524456, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
+      propertyPath: m_Size.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2176736218169524456, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -221752160938979099, guid: 111a1b27445b927488b0f6df6055e409, type: 3}
+      objectReference: {fileID: 2757072878359508851, guid: 111a1b27445b927488b0f6df6055e409, type: 3}
     - target: {fileID: 2176736218169524456, guid: 1bf433fc0c34d6f4fb10e3e320807079, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -121,26 +129,25 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.75, y: 0.75}
+    newSize: {x: 0.75, y: 0.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.061214447, y: 0.503503}
-      - {x: 0.0009319782, y: 0.50049543}
-      - {x: -0.12774259, y: 0.37473738}
-      - {x: -0.12737906, y: 0.25461748}
-      - {x: -0.31353003, y: 0.25185573}
-      - {x: -0.5009673, y: 0.06246069}
-      - {x: -0.50233537, y: -0.31139126}
-      - {x: -0.31255895, y: -0.5023353}
-      - {x: 0.31317216, y: -0.503503}
-      - {x: 0.5006604, y: -0.31352913}
-      - {x: 0.50116765, y: 0.0638445}
-      - {x: 0.31434, y: 0.25417525}
-      - {x: 0.122228146, y: 0.2524532}
-      - {x: 0.12689885, y: 0.43928096}
+    - - {x: 0.062862806, y: 0.38038722}
+      - {x: -0.0020042062, y: 0.3203133}
+      - {x: -0.05981814, y: 0.18987162}
+      - {x: -0.25212166, y: 0.19152467}
+      - {x: -0.37815055, y: 0.06677005}
+      - {x: -0.37844124, y: -0.25106022}
+      - {x: -0.2543826, y: -0.37413186}
+      - {x: 0.2496091, y: -0.3796089}
+      - {x: 0.37676632, y: -0.24996608}
+      - {x: 0.37942824, y: 0.0638445}
+      - {x: 0.25293157, y: 0.18845749}
+      - {x: 0.12691987, y: 0.18958406}
+      - {x: 0.12689885, y: 0.37922683}
   m_UseDelaunayMesh: 0

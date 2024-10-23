@@ -70,9 +70,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -12
+  m_SortingLayerID: -373413409
+  m_SortingLayer: -2
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.7490196}
   m_FlipX: 0
@@ -204,11 +204,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -12
+  m_SortingLayerID: -373413409
+  m_SortingLayer: -2
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.5019608}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.6}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 6222207992270928133}
   - component: {fileID: 3015981690755177143}
   - component: {fileID: 6161173278646552144}
+  - component: {fileID: 7874308428560730880}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -341,6 +342,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Available>k__BackingField: 1
   destination: {fileID: 8265537768305258640}
+--- !u!210 &7874308428560730880
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2896728702916205526}
+  m_Enabled: 1
+  m_SortingLayerID: -731661357
+  m_SortingLayer: -3
+  m_SortingOrder: -100
+  m_SortAtRoot: 0
 --- !u!1 &3472520964914335582
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,11 +424,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -12
+  m_SortingLayerID: -373413409
+  m_SortingLayer: -2
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.2509804}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.4509804}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -451,7 +464,7 @@ Transform:
   m_GameObject: {fileID: 5728093812624163539}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -499,11 +512,11 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -5177388603050735206, guid: 8884154dfe85442a3a3578be807dbcdf, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.1254902, g: 0.121568635, b: 0.18431373, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -583,7 +596,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.1254902, g: 0.121568635, b: 0.18431373, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -602,7 +615,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8158183915984856182}
-  - component: {fileID: 7983834633661503093}
   - component: {fileID: 6352795886560646100}
   - component: {fileID: 7934516302073403906}
   - component: {fileID: 5330091656195822635}
@@ -633,18 +645,6 @@ Transform:
   - {fileID: 1210225628320481849}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!210 &7983834633661503093
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8265537768305258640}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortAtRoot: 0
 --- !u!61 &6352795886560646100
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -718,6 +718,7 @@ MonoBehaviour:
     amount: 0
     item: {fileID: 0}
   uselessItemPrice: 0
+  dropArea: {fileID: 6161173278646552144}
   desireDisplay: {fileID: 809139203120750741}
   desireSource: {fileID: 0}
   inventory: {fileID: 8265537768305258640}
@@ -784,6 +785,10 @@ PrefabInstance:
     - target: {fileID: 435337461997221163, guid: e3a71436488fc624d9275b873e271829, type: 3}
       propertyPath: m_fontSizeBase
       value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 827772913832775679, guid: e3a71436488fc624d9275b873e271829, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1695538966036879447, guid: e3a71436488fc624d9275b873e271829, type: 3}
       propertyPath: m_AnchoredPosition.x
