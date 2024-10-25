@@ -759,7 +759,7 @@ MonoBehaviour:
   offset: {x: -0.5, y: -1}
   inventorySource: {fileID: 8265537768305258640}
   slotContainer: {fileID: 8158183915984856182}
-  slotDisplayPrefab: {fileID: 6437278591240763105, guid: e3a71436488fc624d9275b873e271829, type: 3}
+  slotDisplayPrefab: {fileID: 8155078583642972919, guid: ae990b60c5a482149abb8544e8954e10, type: 3}
 --- !u!114 &4294630810698599383
 MonoBehaviour:
   m_ObjectHideFlags: 0
